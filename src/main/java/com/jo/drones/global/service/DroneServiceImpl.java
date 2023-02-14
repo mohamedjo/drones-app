@@ -3,6 +3,7 @@ package com.jo.drones.global.service;
 import com.jo.drones.global.entity.Drone;
 import com.jo.drones.global.entity.Medication;
 import com.jo.drones.global.entity.enums.State;
+import com.jo.drones.global.exception.custom.AlreadyLoadedException;
 import com.jo.drones.global.exception.custom.BatteryLowException;
 import com.jo.drones.global.exception.custom.DroneNotFoundException;
 import com.jo.drones.global.exception.custom.WeightLimitExceededException;
@@ -32,6 +33,8 @@ public class DroneServiceImpl implements DroneService {
 
         if (drone == null) {
             throw new DroneNotFoundException("there is no drone with this SerialNumber " + droneSerialNumber);
+        } else if (drone.getState() != State.IDLE) {
+            throw new AlreadyLoadedException("This Drone  is Loaded with other medications");
         } else if (drone.getWeightLimit() < calculateWeight(medications)) {
             throw new WeightLimitExceededException("total weight of  medications exceeded WeightLimit of the drone");
         } else if (drone.getBatteryCapacity() < 25) {

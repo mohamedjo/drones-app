@@ -24,6 +24,20 @@ public class DroneFixture {
         return drone;
     }
 
+    public static Drone getLoadedDrone() {
+
+
+        Drone drone = new Drone();
+        drone.setSerialNumber("VVV215TVMT");
+        drone.setId(1L);
+        drone.setModel(Model.LightWeight);
+        drone.setWeightLimit(50);
+        drone.setBatteryCapacity(75);
+        drone.setState(State.LOADED);
+
+        return drone;
+    }
+
     public static Drone getDroneWithBatteryLowLevel() {
 
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.jo.drones.global.entity.Drone;
 import com.jo.drones.global.entity.Medication;
 import com.jo.drones.global.entity.enums.State;
+import com.jo.drones.global.exception.custom.AlreadyLoadedException;
 import com.jo.drones.global.exception.custom.BatteryLowException;
 import com.jo.drones.global.exception.custom.DroneNotFoundException;
 import com.jo.drones.global.exception.custom.WeightLimitExceededException;
@@ -73,6 +74,23 @@ public class DroneServiceImplTest {
         }, "DroneNotFoundException was expected");
 
         Assertions.assertEquals("there is no drone with this SerialNumber " + serialNumber, thrown.getMessage());
+
+    }
+
+    @Test
+    void givenLoadedDroneSerialNumber_whenLoadDroneWithMedicationItems_thenAlreadyLoadedExceptionThrown() throws JsonProcessingException {
+
+        Drone drone = getLoadedDrone();
+        List<Medication> medications = getMedicationsWithHeavyWeight();
+        String serialNumber = "ABCD";
+        when(droneRepository.findDroneBySerialNumber(serialNumber)).thenReturn(drone);
+
+
+        AlreadyLoadedException thrown = Assertions.assertThrows(AlreadyLoadedException.class, () -> {
+            classUnderTest.loadDroneWithMedicationItems(serialNumber, medications);
+        }, "AlreadyLoadedException was expected");
+
+        Assertions.assertEquals("This Drone  is Loaded with other medications", thrown.getMessage());
 
     }
 

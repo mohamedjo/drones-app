@@ -85,6 +85,15 @@ when success
 201 Created
 ```
 
+when Drone is already Loaded
+
+```
+{
+    "status": 500,
+    "message": "This Drone  is Loaded with other medications"
+}
+```
+
 when total weight of medications exceeded WeightLimit of the drone
 
 ```
