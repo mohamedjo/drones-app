@@ -1,6 +1,15 @@
 # Drones App
 
-REST API For controlling Drones
+REST API  service that allows clients to communicate with the drones
+## Features
+- registering a drone
+- loading a drone with medication items
+- checking loaded medication items for a given drone
+- checking available drones for loading
+- check drone battery level for a given drone
+
+
+
 
 ## Technologies Used
 
@@ -11,7 +20,7 @@ REST API For controlling Drones
 - Junit 5, Mockito, Mock MVC
 - Maven
 
-## Run Locally
+## Build And Run Locally
 
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the main method in
 the src/main/java/com/jo/drones/global/DronesAppApplication.java class from your IDE.
