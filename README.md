@@ -84,6 +84,14 @@ when success
 ```
 201 Created
 ```
+when Serial Number Not Correct(Drone Not Exist)
+
+```
+{
+    "status": 404,
+    "message": "there is no drone with this SerialNumber {serialNumber}"
+}
+```
 
 when Drone is already Loaded
 
@@ -199,6 +207,7 @@ when Serial Number Not Correct(Drone Not Exist)
 `check drone battery level for a given drone` http://localhost:8080/api/batteryLevel?droneSerialNumber={serialNumber} <br/>
 
 **Response**
+
 when success
 
 ```
