@@ -232,6 +232,10 @@ when Serial Number Not Correct(Drone Not Exist)
 }
 ```
 
+## Periodic  Task
+
+periodic task to check drones battery levels and create history event log for this every 10 Minutes
+and I named it DronePeriodicTask (\src\main\java\com\jo\drones\global\task\DronePeriodicTask.java)
 
 
 
